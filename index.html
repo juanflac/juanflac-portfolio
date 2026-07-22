@@ -90,9 +90,9 @@ body::before{
   *{animation-duration:.01ms!important;transition-duration:.01ms!important;}
 }
 /* ============ header ============ */
-header{text-align:center;padding:64px 16px 26px;position:relative;overflow:hidden;}
+header{text-align:center;padding:76px 16px 56px;position:relative;}
 .logo-wrap{position:relative;display:inline-block;}
-.logo{font-size:clamp(60px,14vw,160px);letter-spacing:1px;line-height:1.1;transform:rotate(-2deg);}
+.logo{font-size:clamp(60px,14vw,160px);letter-spacing:1px;line-height:1.5;transform:rotate(-2deg);}
 @keyframes blink{50%{opacity:0}}
 /* cross ring accents around header, basedgod style */
 .cross-deco span{
@@ -107,7 +107,7 @@ header{text-align:center;padding:64px 16px 26px;position:relative;overflow:hidde
 /* ============ star rows ============ */
 .starline{
   overflow:hidden;white-space:nowrap;text-align:center;
-  font-size:22px;line-height:1.4;padding:6px 0;user-select:none;
+  font-size:22px;line-height:1.4;padding:6px 0;margin:14px 0;user-select:none;
 }
 .starline span{display:inline-block;margin:0 3px;animation:starPulse 1.6s ease-in-out infinite;}
 @keyframes starPulse{0%,100%{opacity:.5;transform:scale(.9)}50%{opacity:1;transform:scale(1.15)}}
@@ -141,11 +141,11 @@ nav a:focus-visible,#enterBtn:focus-visible{outline:3px dashed var(--pink);outli
 /* ============ sections ============ */
 main{max-width:1160px;margin:0 auto;padding:0 18px 40px;}
 section{margin:70px 0;}
-.sec-head{text-align:center;margin-bottom:6px;position:relative;}
+.sec-head{text-align:center;margin-bottom:16px;position:relative;}
 .sec-title{
   display:inline-block;
   font-family:"Ballet",cursive;font-weight:400;color:var(--ink);
-  font-size:clamp(34px,6.4vw,58px);letter-spacing:1px;
+  font-size:clamp(34px,6.4vw,58px);letter-spacing:1px;line-height:1.6;
   transform:rotate(-1.5deg);
 }
 .sec-title.alt{transform:rotate(1.2deg);}
@@ -209,11 +209,53 @@ section{margin:70px 0;}
 .contact-box .biglink{
   display:inline-block;margin-top:12px;text-decoration:none;
   font-family:"Bungee",cursive;font-size:clamp(24px,4.6vw,36px);letter-spacing:1px;
-  color:var(--pink-dk);
+  color:var(--pink);
   transform:rotate(-2deg);
 }
 .contact-box .biglink:hover{transform:rotate(2deg) scale(1.04);}
 .contact-box p{font-family:"Pirata One",cursive;font-size:21px;color:var(--ink);letter-spacing:2px;}
+/* ============ guestbook ============ */
+.gb-box{
+  max-width:680px;margin:0 auto;padding:28px 24px;
+  background:#fff;border:3px solid var(--ink);box-shadow:9px 9px 0 var(--ink);
+}
+.gb-canvas-wrap{position:relative;border:3px solid var(--ink);background:#fff;touch-action:none;}
+.gb-canvas-wrap canvas{display:block;width:100%;height:180px;cursor:crosshair;}
+.gb-colors{display:flex;gap:8px;margin:12px 0;flex-wrap:wrap;align-items:center;}
+.gb-swatch{
+  width:26px;height:26px;border-radius:50%;border:2px solid var(--ink);cursor:pointer;padding:0;
+}
+.gb-swatch.active{box-shadow:0 0 0 3px #fff, 0 0 0 5px var(--ink);}
+.gb-clear{
+  margin-left:auto;font-family:"VT323",monospace;font-size:16px;letter-spacing:1px;
+  background:#fff;border:2px solid var(--ink);padding:3px 12px;cursor:pointer;
+}
+.gb-clear:hover{background:var(--ink);color:#fff;}
+.gb-field{
+  width:100%;font-family:"VT323",monospace;font-size:18px;letter-spacing:.5px;
+  border:2px solid var(--ink);padding:8px 10px;margin-top:10px;background:#fdfdfa;color:var(--ink);
+}
+textarea.gb-field{resize:vertical;min-height:60px;}
+.gb-submit{
+  margin-top:14px;font-family:"Bungee",cursive;font-size:14px;letter-spacing:1px;
+  color:#fff;padding:11px 30px;cursor:pointer;
+  background:linear-gradient(180deg,#ff8ed4 0%,var(--pink) 48%,var(--pink-dk) 52%,#ff5ec7 100%);
+  border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);
+}
+.gb-submit:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink);}
+.gb-submit:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink);}
+.gb-entries{max-width:680px;margin:36px auto 0;display:grid;gap:18px;}
+.gb-entry{
+  background:#fff;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);
+  padding:14px 16px;display:flex;gap:14px;align-items:flex-start;
+}
+.gb-entry:nth-child(odd){transform:rotate(-.6deg);}
+.gb-entry:nth-child(even){transform:rotate(.5deg);}
+.gb-entry img{width:110px;height:64px;object-fit:contain;border:2px solid var(--ink);background:#fff;flex-shrink:0;}
+.gb-entry-name{font-family:"Bungee",cursive;font-size:13px;color:var(--pink-dk);}
+.gb-entry-date{font-family:"VT323",monospace;font-size:14px;color:#888;margin-left:8px;}
+.gb-entry-msg{font-family:"VT323",monospace;font-size:17px;color:var(--ink);margin-top:4px;line-height:1.3;}
+.gb-empty{text-align:center;font-family:"Pirata One",cursive;font-size:19px;color:#888;letter-spacing:1px;}
 /* ============ panels ============ */
 .panels{
   max-width:340px;margin:76px auto 0;padding:0 4px;
@@ -229,8 +271,8 @@ section{margin:70px 0;}
 .panel-body .d{color:var(--pink-dk);font-weight:bold;}
 .panel-body .counter-big{
   display:block;margin:10px auto 8px;width:max-content;
-  padding:5px 14px;font-size:26px;letter-spacing:7px;color:#7CFC00;background:#000;
-  border:3px solid var(--ink);text-shadow:0 0 8px #7CFC00;
+  padding:5px 14px;font-size:26px;letter-spacing:7px;color:var(--pink);background:#000;
+  border:3px solid var(--ink);text-shadow:0 0 8px var(--pink);
 }
 @media (max-width:680px){.panels{grid-template-columns:1fr;}}
 /* ============ footer ============ */
@@ -269,7 +311,7 @@ footer{
 
 <div class="tickerwrap" aria-hidden="true">
   <div class="ticker">
-    ✚ WELCOME TO THE OFFICIAL SITE OF <b>JUANFLAC</b> ✚ VIDEO EDITOR &amp; COLORIST ✚ MUSIC VIDEOS <em>★</em> VFX <em>★</em> COLOR CORRECTION <em>★</em> SOUND DESIGN ✚ NOW BOOKING COLLABS — DM <b>@JUANWRU</b> ON INSTAGRAM ✚ BEST VIEWED AT 1024x768 ✚ SIGN THE GUESTBOOK B4 U LEAVE ✚&nbsp;&nbsp;&nbsp;
+    ✚ WELCOME TO THE OFFICIAL SITE OF <b>JUANFLAC</b> ✚ VIDEO EDITOR &amp; COLORIST ✚ MUSIC VIDEOS <em>★</em> VFX <em>★</em> COLOR CORRECTION <em>★</em> SOUND DESIGN ✚ NOW BOOKING COLLABS — DM <b>@JUANWRU</b> ON INSTAGRAM ✚ SIGN THE GUESTBOOK B4 U LEAVE ✚&nbsp;&nbsp;&nbsp;
     ✚ WELCOME TO THE OFFICIAL SITE OF <b>JUANFLAC</b> ✚ VIDEO EDITOR &amp; COLORIST ✚ MUSIC VIDEOS <em>★</em> VFX <em>★</em> COLOR CORRECTION <em>★</em> SOUND DESIGN ✚ NOW BOOKING COLLABS — DM <b>@JUANWRU</b> ON INSTAGRAM ✚
   </div>
 </div>
@@ -289,6 +331,7 @@ footer{
   <a href="#concert">CONCERT VISUALS</a>
   <a href="#visualizers">VISUAL­IZERS</a>
   <a href="#reels">AD REELS</a>
+  <a href="#guestbook">GUESTBOOK</a>
   <a href="#contact">CONTACT</a>
 </nav>
 
@@ -439,6 +482,28 @@ footer{
 
 <div class="starline" aria-hidden="true"></div>
 
+<section id="guestbook">
+  <div class="sec-head"><h2 class="sec-title">Guestbook</h2></div>
+  <p class="sec-sub">draw somethin' <b>★</b> leave a message</p>
+  <div class="gb-box">
+    <div class="gb-canvas-wrap"><canvas id="gbCanvas" width="600" height="180"></canvas></div>
+    <div class="gb-colors" id="gbColors">
+      <button type="button" class="gb-swatch active" data-c="#0c0c0c" style="background:#0c0c0c"></button>
+      <button type="button" class="gb-swatch" data-c="#ff2fb3" style="background:#ff2fb3"></button>
+      <button type="button" class="gb-swatch" data-c="#9d4dff" style="background:#9d4dff"></button>
+      <button type="button" class="gb-swatch" data-c="#2fd4ff" style="background:#2fd4ff"></button>
+      <button type="button" class="gb-swatch" data-c="#ffce00" style="background:#ffce00"></button>
+      <button type="button" class="gb-clear" id="gbClear">CLEAR</button>
+    </div>
+    <input class="gb-field" id="gbName" type="text" maxlength="24" placeholder="ur name...">
+    <textarea class="gb-field" id="gbMsg" maxlength="140" placeholder="leave ur mark..."></textarea>
+    <button class="gb-submit" id="gbSubmit">✎ SIGN THE BOOK</button>
+  </div>
+  <div class="gb-entries" id="gbEntries"></div>
+</section>
+
+<div class="starline" aria-hidden="true"></div>
+
 <section id="contact">
   <div class="sec-head"><h2 class="sec-title alt">Contact</h2></div>
   <div class="contact-box">
@@ -477,6 +542,95 @@ document.getElementById('splash').addEventListener('keyup',function(e){
   localStorage.setItem('juanflac_hits',n);
   document.getElementById('hitcounter').textContent=String(n).padStart(7,'0');
   document.getElementById('visnum').textContent=n;
+})();
+// guestbook: draw pad
+(function(){
+  var canvas=document.getElementById('gbCanvas');
+  var ctx=canvas.getContext('2d');
+  var drawing=false, lastX=0, lastY=0, color='#0c0c0c', hasDrawn=false;
+
+  function resize(){
+    var rect=canvas.getBoundingClientRect();
+    var img=canvas.width?canvas.toDataURL():null;
+    canvas.width=rect.width*2; canvas.height=rect.height*2;
+    ctx.scale(2,2); ctx.lineCap='round'; ctx.lineJoin='round'; ctx.lineWidth=3;
+    if(img){var im=new Image();im.onload=function(){ctx.drawImage(im,0,0,rect.width,rect.height);};im.src=img;}
+  }
+  resize();
+  window.addEventListener('resize',resize);
+
+  function pos(e){
+    var rect=canvas.getBoundingClientRect();
+    var t=e.touches?e.touches[0]:e;
+    return {x:t.clientX-rect.left, y:t.clientY-rect.top};
+  }
+  function start(e){drawing=true;hasDrawn=true;var p=pos(e);lastX=p.x;lastY=p.y;e.preventDefault();}
+  function move(e){
+    if(!drawing) return;
+    var p=pos(e);
+    ctx.strokeStyle=color;
+    ctx.beginPath();ctx.moveTo(lastX,lastY);ctx.lineTo(p.x,p.y);ctx.stroke();
+    lastX=p.x;lastY=p.y;e.preventDefault();
+  }
+  function end(){drawing=false;}
+  canvas.addEventListener('mousedown',start);
+  canvas.addEventListener('mousemove',move);
+  window.addEventListener('mouseup',end);
+  canvas.addEventListener('touchstart',start,{passive:false});
+  canvas.addEventListener('touchmove',move,{passive:false});
+  canvas.addEventListener('touchend',end);
+
+  document.querySelectorAll('.gb-swatch').forEach(function(sw){
+    sw.addEventListener('click',function(){
+      document.querySelectorAll('.gb-swatch').forEach(function(s){s.classList.remove('active');});
+      sw.classList.add('active');
+      color=sw.dataset.c;
+    });
+  });
+  document.getElementById('gbClear').addEventListener('click',function(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    hasDrawn=false;
+  });
+
+  var KEY='juanflac_guestbook';
+  function loadEntries(){
+    try{return JSON.parse(localStorage.getItem(KEY)||'[]');}catch(e){return [];}
+  }
+  function renderEntries(){
+    var list=loadEntries();
+    var wrap=document.getElementById('gbEntries');
+    if(!list.length){wrap.innerHTML='<p class="gb-empty">be the first to sign ✧</p>';return;}
+    wrap.innerHTML=list.map(function(e){
+      var img=e.drawing?'<img src="'+e.drawing+'" alt="drawing">':'';
+      return '<div class="gb-entry">'+img+
+        '<div><div><span class="gb-entry-name">'+esc(e.name||'anonymous')+'</span>'+
+        '<span class="gb-entry-date">'+esc(e.date)+'</span></div>'+
+        '<div class="gb-entry-msg">'+esc(e.msg)+'</div></div></div>';
+    }).join('');
+  }
+  function esc(s){
+    var d=document.createElement('div');d.textContent=s||'';return d.innerHTML;
+  }
+  renderEntries();
+
+  document.getElementById('gbSubmit').addEventListener('click',function(){
+    var name=document.getElementById('gbName').value.trim();
+    var msg=document.getElementById('gbMsg').value.trim();
+    if(!msg && !hasDrawn){alert('write something or draw something first!');return;}
+    var list=loadEntries();
+    list.unshift({
+      name:name, msg:msg,
+      drawing:hasDrawn?canvas.toDataURL('image/png'):null,
+      date:new Date().toLocaleDateString()
+    });
+    if(list.length>30) list=list.slice(0,30);
+    localStorage.setItem(KEY,JSON.stringify(list));
+    document.getElementById('gbName').value='';
+    document.getElementById('gbMsg').value='';
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    hasDrawn=false;
+    renderEntries();
+  });
 })();
 // rainbow star rows
 (function(){
