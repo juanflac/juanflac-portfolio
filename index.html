@@ -6,7 +6,7 @@
 <title>★ JUANFLAC ★ video editor</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=VT323&family=Bungee&family=Pirata+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=VT323&family=Bungee&family=Pirata+One&family=Ballet&display=swap" rel="stylesheet">
 <style>
 :root{
   --paper:#fdfdfa;
@@ -44,31 +44,20 @@ body::before{
   transition:opacity .55s, visibility .55s;
 }
 #splash.gone{opacity:0;visibility:hidden;}
-.glitter-text{
-  font-family:"Anton",sans-serif;font-style:italic;text-transform:uppercase;
-  background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23g)' opacity='0.55'/%3E%3C/svg%3E"),
-    linear-gradient(180deg,#ffb3e2 0%,#ff5ec7 30%,#ff2fb3 55%,#e0189a 75%,#ff6cc9 100%);
-  background-blend-mode:overlay;
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  text-shadow:
-    3px 0 0 #000,-3px 0 0 #000,0 3px 0 #000,0 -3px 0 #000,
-    3px 3px 0 #000,-3px 3px 0 #000,3px -3px 0 #000,-3px -3px 0 #000,
-    6px 6px 0 #000;
+.brand-text{
+  font-family:"Ballet","Pirata One",cursive;font-weight:400;
+  color:var(--ink);
 }
-.splash-logo{font-size:clamp(48px,11vw,110px);letter-spacing:2px;}
-.splash-sub{
-  font-family:"Pirata One",cursive;font-size:clamp(20px,3.6vw,30px);
-  color:var(--ink);letter-spacing:2px;text-align:center;
-}
+.splash-logo{font-size:clamp(56px,13vw,130px);letter-spacing:1px;}
 #splash .loadbar{
-  width:min(320px,70vw);height:16px;border:3px solid var(--ink);
-  background:#fff;box-shadow:5px 5px 0 var(--ink);
+  width:min(320px,70vw);height:10px;border-radius:10px;
+  background:#eee;overflow:hidden;
+  box-shadow:inset 0 1px 3px #00000022;
 }
 #splash .loadbar i{
-  display:block;height:100%;width:0;
-  background:repeating-linear-gradient(135deg, var(--pink) 0 12px, #000 12px 16px, var(--gold) 16px 28px, #000 28px 32px);
-  animation:loadit 1.6s steps(20) forwards;
+  display:block;height:100%;width:0;border-radius:10px;
+  background:linear-gradient(90deg, var(--pink) 0%, var(--pink-dk) 100%);
+  animation:loadit 1.6s ease-out forwards;
 }
 @keyframes loadit{to{width:100%}}
 #splash .pct{font-family:"VT323",monospace;font-size:22px;color:var(--ink);letter-spacing:2px;}
@@ -103,23 +92,7 @@ body::before{
 /* ============ header ============ */
 header{text-align:center;padding:64px 16px 26px;position:relative;overflow:hidden;}
 .logo-wrap{position:relative;display:inline-block;}
-.logo-wrap::before{
-  content:"★";position:absolute;top:50%;left:50%;z-index:-1;
-  transform:translate(-38%,-56%) rotate(12deg);
-  font-size:clamp(100px,22vw,250px);line-height:1;
-  background:linear-gradient(180deg,#fff2b8 0%,#ffe066 32%,#e0a800 50%,#9a6c00 54%,#ffd83d 72%,#fff3b0 100%);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  filter:drop-shadow(3px 3px 0 #000) drop-shadow(-2px -2px 0 #000);
-}
-.logo{font-size:clamp(60px,14vw,160px);letter-spacing:3px;line-height:.95;transform:rotate(-2deg);}
-.tagline{
-  margin-top:20px;font-family:"Pirata One",cursive;font-size:clamp(24px,4.4vw,42px);
-  letter-spacing:2px;color:var(--ink);
-  background:linear-gradient(180deg,#f4f4fa 0%,#d9dae6 30%,#7d7e92 48%,#3c3d4c 52%,#b8b9cb 68%,#f6f6fc 100%);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  text-shadow:2px 0 0 #000,-2px 0 0 #000,0 2px 0 #000,0 -2px 0 #000,3px 3px 0 #000;
-}
-.tagline .blink{animation:blink 1s steps(1) infinite;}
+.logo{font-size:clamp(60px,14vw,160px);letter-spacing:1px;line-height:1.1;transform:rotate(-2deg);}
 @keyframes blink{50%{opacity:0}}
 /* cross ring accents around header, basedgod style */
 .cross-deco span{
@@ -171,7 +144,8 @@ section{margin:70px 0;}
 .sec-head{text-align:center;margin-bottom:6px;position:relative;}
 .sec-title{
   display:inline-block;
-  font-size:clamp(30px,5.6vw,52px);letter-spacing:2px;
+  font-family:"Ballet",cursive;font-weight:400;color:var(--ink);
+  font-size:clamp(34px,6.4vw,58px);letter-spacing:1px;
   transform:rotate(-1.5deg);
 }
 .sec-title.alt{transform:rotate(1.2deg);}
@@ -234,15 +208,15 @@ section{margin:70px 0;}
 }
 .contact-box .biglink{
   display:inline-block;margin-top:12px;text-decoration:none;
-  font-size:clamp(34px,7vw,60px);letter-spacing:2px;
+  font-family:"Bungee",cursive;font-size:clamp(24px,4.6vw,36px);letter-spacing:1px;
+  color:var(--pink-dk);
   transform:rotate(-2deg);
 }
 .contact-box .biglink:hover{transform:rotate(2deg) scale(1.04);}
 .contact-box p{font-family:"Pirata One",cursive;font-size:21px;color:var(--ink);letter-spacing:2px;}
 /* ============ panels ============ */
 .panels{
-  max-width:960px;margin:76px auto 0;padding:0 4px;
-  display:grid;grid-template-columns:1fr 1fr;gap:24px;
+  max-width:340px;margin:76px auto 0;padding:0 4px;
 }
 .panel{background:#fff;border:3px solid var(--ink);box-shadow:7px 7px 0 var(--ink);}
 .panel-head{
@@ -288,10 +262,8 @@ footer{
 <body>
 
 <div id="splash" role="dialog" aria-label="intro">
-  <div class="splash-logo glitter-text">juanflac</div>
-  <div class="splash-sub">✠ video editor ✠ colorist ✠ vfx ✠</div>
+  <div class="splash-logo brand-text">Juanflac</div>
   <div class="loadbar"><i></i></div>
-  <div class="pct" id="pct">0%</div>
   <button id="enterBtn" onclick="enterSite()">★ ENTER SITE ★</button>
 </div>
 
@@ -306,8 +278,7 @@ footer{
   <div class="cross-deco" aria-hidden="true">
     <span>✚</span><span>✚</span><span>✚</span><span>✚</span><span>✚</span><span>✚</span>
   </div>
-  <div class="logo-wrap"><h1 class="logo glitter-text">Juanflac</h1></div>
-  <p class="tagline">✠ video editor ✠ colorist ✠ vfx ✠<span class="blink">▮</span></p>
+  <div class="logo-wrap"><h1 class="logo brand-text">Juanflac</h1></div>
 </header>
 
 <div class="starline" aria-hidden="true"></div>
@@ -324,8 +295,7 @@ footer{
 <main>
 
 <section id="music-videos">
-  <div class="sec-head"><h2 class="sec-title glitter-text">Music Videos</h2></div>
-  <p class="sec-sub">the main event <b>★</b> full edits, color &amp; vfx</p>
+  <div class="sec-head"><h2 class="sec-title">Music Videos</h2></div>
   <div class="grid">
     <div class="card">
       <span class="corner-star" aria-hidden="true">★</span>
@@ -368,8 +338,7 @@ footer{
 <div class="starline" aria-hidden="true"></div>
 
 <section id="snippet">
-  <div class="sec-head"><h2 class="sec-title alt glitter-text">Snippet</h2></div>
-  <p class="sec-sub">unreleased material <b>★</b> top secret</p>
+  <div class="sec-head"><h2 class="sec-title alt">Snippet</h2></div>
   <div class="feature">
     <div class="card">
       <span class="newflag">UNRELEASED</span>
@@ -386,8 +355,7 @@ footer{
 <div class="starline" aria-hidden="true"></div>
 
 <section id="concert">
-  <div class="sec-head"><h2 class="sec-title glitter-text">Concert Visuals</h2></div>
-  <p class="sec-sub">big screens, big energy <b>★</b> live show graphics</p>
+  <div class="sec-head"><h2 class="sec-title">Concert Visuals</h2></div>
   <div class="grid two">
     <div class="card">
       <div class="frame"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/DzZaHhJd23I" title="Concert visuals 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
@@ -404,14 +372,21 @@ footer{
         <div class="tags"><span class="tag b">VISUALS</span><span class="tag u">LIVE</span></div>
       </div>
     </div>
+    <div class="card">
+      <div class="frame"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/jkPHS-szYHY" title="Concert visuals 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+      <div class="card-info">
+        <div class="card-title">CONCERT VISUAL 03</div>
+        <div class="tags"><span class="tag b">VISUALS</span><span class="tag u">LIVE</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
 <div class="starline" aria-hidden="true"></div>
 
 <section id="visualizers">
-  <div class="sec-head"><h2 class="sec-title alt glitter-text">Album Visualizers</h2></div>
-  <p class="sec-sub">press play, zone out <b>★</b> loops 4 the albums</p>
+  <div class="sec-head"><h2 class="sec-title alt">Album Visualizers</h2></div>
+  <p class="sec-sub">loops 4 the albums</p>
   <div class="grid">
     <div class="card">
       <div class="frame"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/GNfKjw7ejxA" title="Album visualizer 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
@@ -428,20 +403,13 @@ footer{
         <div class="tags"><span class="tag u">VISUALIZER</span></div>
       </div>
     </div>
-    <div class="card">
-      <div class="frame"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/jkPHS-szYHY" title="Album visualizer 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-      <div class="card-info">
-        <div class="card-title">VISUALIZER 03</div>
-        <div class="tags"><span class="tag u">VISUALIZER</span></div>
-      </div>
-    </div>
   </div>
 </section>
 
 <div class="starline" aria-hidden="true"></div>
 
 <section id="reels">
-  <div class="sec-head"><h2 class="sec-title glitter-text">Funny Ad Reels</h2></div>
+  <div class="sec-head"><h2 class="sec-title">Funny Ad Reels</h2></div>
   <p class="sec-sub">sound design + vfx + edit + color + graphics <b>★</b> lol guaranteed</p>
   <div class="shorts-grid">
     <div class="card">
@@ -472,29 +440,20 @@ footer{
 <div class="starline" aria-hidden="true"></div>
 
 <section id="contact">
-  <div class="sec-head"><h2 class="sec-title alt glitter-text">Contact</h2></div>
+  <div class="sec-head"><h2 class="sec-title alt">Contact</h2></div>
   <div class="contact-box">
     <p>wanna work together? slide in the DMs</p>
-    <a class="biglink glitter-text" href="https://instagram.com/juanwru" target="_blank" rel="noopener">@juanwru</a>
+    <a class="biglink" href="https://instagram.com/juanwru" target="_blank" rel="noopener">Instagram: @juanwru</a>
     <p style="margin-top:16px">instagram ✠ open for collabs, music videos,<br>color, vfx &amp; whatever crazy idea u got</p>
   </div>
 </section>
 
 <div class="panels">
   <div class="panel">
-    <div class="panel-head">:: SITE UPDATES ::</div>
-    <div class="panel-body">
-      <div class="row"><span class="d">21.7.2026</span> :: site rebuilt. new hosting server, new content</div>
-      <div class="row"><span class="d">21.7.2026</span> :: 5 new ad reels added to the vault</div>
-      <div class="row"><span class="d">??.?.????</span> :: unreleased snippet leaked (on purpose)</div>
-      <div class="row"><span class="d">soon</span> :: guestbook coming back. behave this time</div>
-    </div>
-  </div>
-  <div class="panel">
     <div class="panel-head">:: SITE COUNTER ::</div>
     <div class="panel-body" style="text-align:center">
-      <span class="counter-big" id="hitcounter">0048291</span>
-      u are visitor #<span id="visnum">48291</span><br>
+      <span class="counter-big" id="hitcounter">0000001</span>
+      u are visitor #<span id="visnum">1</span><br>
       since forever ★ thx 4 stopping by
     </div>
   </div>
@@ -505,33 +464,19 @@ footer{
 <footer>
   <div class="starline" aria-hidden="true"></div>
   <div style="margin-top:14px">© 2002—∞ JUANFLAC. all rights reserved (or whatever)</div>
-  <div class="badges">
-    <span class="badge">BEST VIEWED IN <i>1024x768</i></span>
-    <span class="badge">MADE WITH <i>♥</i> &amp; INSOMNIA</span>
-    <span class="badge">POWERED BY <i>PURE FLOW</i></span>
-    <span class="badge"><i>56K</i> FRIENDLY (kinda)</span>
-  </div>
 </footer>
 
 <script>
-// splash loader
-(function(){
-  var pct=document.getElementById('pct'),n=0;
-  var t=setInterval(function(){
-    n+=Math.floor(Math.random()*11)+3;
-    if(n>=100){n=100;clearInterval(t);pct.textContent='100% — READY';}
-    else pct.textContent=n+'%';
-  },90);
-})();
 function enterSite(){document.getElementById('splash').classList.add('gone');}
 document.getElementById('splash').addEventListener('keyup',function(e){
   if(e.key==='Escape') enterSite();
 });
-// hit counter
+// real hit counter (persists per-browser via localStorage)
 (function(){
-  var base=48291+Math.floor(Math.random()*137);
-  document.getElementById('hitcounter').textContent=String(base).padStart(7,'0');
-  document.getElementById('visnum').textContent=base;
+  var n=parseInt(localStorage.getItem('juanflac_hits')||'0',10)+1;
+  localStorage.setItem('juanflac_hits',n);
+  document.getElementById('hitcounter').textContent=String(n).padStart(7,'0');
+  document.getElementById('visnum').textContent=n;
 })();
 // rainbow star rows
 (function(){
