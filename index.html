@@ -17,6 +17,7 @@
   --purple:#9d4dff;
   --blue:#2fd4ff;
   --body-font:"Trebuchet MS","Verdana",sans-serif;
+  --ease-out:cubic-bezier(0.23,1,0.32,1);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -67,9 +68,10 @@ body::before{
   border:3px solid var(--ink);
   box-shadow:6px 6px 0 var(--ink);
   text-shadow:1px 1px 0 #000, -1px -1px 0 #00000055;
+  transition:transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
 }
 #enterBtn:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink);}
-#enterBtn:active{transform:translate(4px,4px);box-shadow:2px 2px 0 var(--ink);}
+#enterBtn:active{transform:scale(.97);box-shadow:2px 2px 0 var(--ink);transition-duration:100ms;}
 @keyframes btnIn{to{opacity:1}}
 /* ============ ticker ============ */
 .tickerwrap{
@@ -116,44 +118,21 @@ main{max-width:1160px;margin:0 auto;padding:0 18px 40px;}
   gap:32px;max-width:1020px;margin:40px auto 10px;
 }
 .hub-card{
-  display:flex;flex-direction:column;align-items:center;text-align:center;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
   text-decoration:none;color:var(--ink);
   background:#fff;border:3px solid var(--ink);
   box-shadow:9px 9px 0 var(--ink);
-  padding:30px 20px 26px;
-  transition:transform .15s, box-shadow .15s;
+  padding:52px 20px;min-height:120px;
+  transition:transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
 }
 .hub-grid > a:nth-child(1){transform:rotate(-1.2deg);}
 .hub-grid > a:nth-child(2){transform:rotate(.9deg);}
 .hub-grid > a:nth-child(3){transform:rotate(-.8deg);}
 .hub-card:hover{transform:rotate(0deg) translate(-3px,-3px)!important;box-shadow:13px 13px 0 var(--ink);}
-.hub-card:active{transform:translate(2px,2px)!important;box-shadow:5px 5px 0 var(--ink);}
-.hub-icon{font-size:52px;line-height:1;margin-bottom:6px;}
-.hub-icon.note-icon{font-family:"Ballet",cursive;color:var(--gold);text-shadow:2px 2px 0 #000,-1px -1px 0 #000;}
-.hub-icon.play-icon{color:var(--pink);text-shadow:2px 2px 0 #000,-1px -1px 0 #000;}
-.eq-icon{display:flex;align-items:flex-end;gap:5px;height:52px;margin-bottom:6px;}
-.eq-icon i{
-  display:block;width:9px;background:var(--purple);border:2px solid var(--ink);
-  animation:eqBounce 1s ease-in-out infinite;
-}
-.eq-icon i:nth-child(1){height:40%;animation-delay:.1s;}
-.eq-icon i:nth-child(2){height:100%;animation-delay:.4s;}
-.eq-icon i:nth-child(3){height:65%;animation-delay:0s;}
-.eq-icon i:nth-child(4){height:85%;animation-delay:.6s;}
-@keyframes eqBounce{0%,100%{transform:scaleY(.5)}50%{transform:scaleY(1)}}
+.hub-card:active{transform:scale(.97)!important;box-shadow:5px 5px 0 var(--ink);transition-duration:100ms;}
 .hub-title{
-  font-family:"Ballet",cursive;font-weight:400;font-size:clamp(28px,4.6vw,38px);
+  font-family:"Ballet",cursive;font-weight:400;font-size:clamp(30px,5.2vw,42px);
   letter-spacing:1px;color:var(--ink);
-}
-.hub-tag{
-  font-family:"Pirata One",cursive;font-size:15px;letter-spacing:1px;color:#666;
-  margin:8px 0 16px;
-}
-.hub-enter{
-  font-family:"Bungee",cursive;font-size:11px;letter-spacing:1px;color:#fff;
-  padding:8px 20px;border:2px solid var(--ink);
-  background:linear-gradient(180deg,#ff8ed4 0%,var(--pink) 48%,var(--pink-dk) 52%,#ff5ec7 100%);
-  box-shadow:3px 3px 0 var(--ink);
 }
 /* ============ sections ============ */
 section{margin:70px 0;}
@@ -273,7 +252,7 @@ footer{
     <span>✚</span><span>✚</span><span>✚</span><span>✚</span><span>✚</span><span>✚</span>
   </div>
   <div class="logo-wrap"><h1 class="logo brand-text">Juanflac</h1></div>
-  <p class="tagline">producer ✦ mix &amp; master ✦ video editor</p>
+  <p class="tagline">producer ✦ sound engineer</p>
 </header>
 
 <div class="starline" aria-hidden="true"></div>
@@ -282,22 +261,13 @@ footer{
 
 <div class="hub-grid">
   <a class="hub-card" href="producing.html">
-    <span class="hub-icon note-icon" aria-hidden="true">♪</span>
     <span class="hub-title">Producing</span>
-    <span class="hub-tag">beats · instrumentals · full productions</span>
-    <span class="hub-enter">ENTER →</span>
   </a>
   <a class="hub-card" href="mix-master.html">
-    <span class="eq-icon" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
     <span class="hub-title">Mix &amp; Master</span>
-    <span class="hub-tag">singles · albums · every role on the console</span>
-    <span class="hub-enter">ENTER →</span>
   </a>
   <a class="hub-card" href="video-editing.html">
-    <span class="hub-icon play-icon" aria-hidden="true">▶</span>
     <span class="hub-title">Video Editing</span>
-    <span class="hub-tag">music videos · vfx · color correction</span>
-    <span class="hub-enter">ENTER →</span>
   </a>
 </div>
 
