@@ -139,8 +139,10 @@ section{margin:70px 0;}
 .catalog-wrap{text-align:center;margin-top:44px;}
 .catalog-btn{
   display:inline-block;font-family:"Bungee",cursive;font-size:14px;letter-spacing:1px;
-  color:#fff;padding:14px 34px;text-decoration:none;
-  background:linear-gradient(180deg,#40e070 0%,#1db954 48%,#0f7a35 52%,#38d666 100%);
+  color:#fff;padding:14px 34px;text-decoration:none;border-radius:40px;
+  background:
+    radial-gradient(circle at 30% 25%, #ffffff 0%, #d8ffe8 10%, transparent 30%),
+    radial-gradient(circle at 50% 50%, #58e88a 0%, #1db954 45%, #0f7a35 80%, #052f15 100%);
   border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);
   transition:transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
 }
@@ -160,6 +162,19 @@ footer{
 ::selection{background:var(--pink);color:#fff;}
 ::-webkit-scrollbar{width:14px;background:#eee;}
 ::-webkit-scrollbar-thumb{background:var(--ink);border:3px solid #eee;}
+/* ============ persistent d0 spinner ============ */
+.d0-spin-wrap{
+  position:fixed;right:14px;bottom:14px;z-index:9990;
+  width:78px;height:78px;border-radius:50%;
+  background:#fff;border:3px solid var(--ink);
+  box-shadow:4px 4px 0 var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;perspective:400px;
+}
+.d0-spin-img{width:78%;height:78%;object-fit:contain;animation:d0Flip 2.6s linear infinite;}
+@keyframes d0Flip{from{transform:rotateX(0deg)}to{transform:rotateX(360deg)}}
+@media (prefers-reduced-motion:reduce){.d0-spin-img{animation:none;}}
+@media (max-width:480px){.d0-spin-wrap{width:56px;height:56px;right:10px;bottom:10px;}}
 </style>
 </head>
 <body>
@@ -210,7 +225,22 @@ footer{
   <div style="margin-top:14px">© 2002—∞ JUANFLAC. all rights reserved (or whatever)</div>
 </footer>
 
+<div class="d0-spin-wrap" aria-hidden="true">
+  <img id="d0logo" class="d0-spin-img" src="assets/d0/deities.png" alt="">
+</div>
+
 <script>
+// persistent d0 logo spinner (coin-flip cycle, every page)
+(function(){
+  var img=document.getElementById('d0logo');
+  if(!img) return;
+  var logos=['assets/d0/deities.png','assets/d0/d0-stars.png','assets/d0/d0-smile.png','assets/d0/d0-mujer.png','assets/d0/d0-nickelodeon.png','assets/d0/d0-glee-blurred.png'];
+  var i=0;
+  img.addEventListener('animationiteration',function(){
+    i=(i+1)%logos.length;
+    img.src=logos[i];
+  });
+})();
 // EDIT ME: production highlight entries. Set embed to a Spotify embed URL
 // (e.g. "https://open.spotify.com/embed/track/XXXXXXXX") to swap the
 // placeholder for a real preview player. Set catalogUrl below for the button.

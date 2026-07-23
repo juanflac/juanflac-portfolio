@@ -171,6 +171,19 @@ footer{
 @media (max-width:640px){
   .shorts-grid{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));}
 }
+/* ============ persistent d0 spinner ============ */
+.d0-spin-wrap{
+  position:fixed;right:14px;bottom:14px;z-index:9990;
+  width:78px;height:78px;border-radius:50%;
+  background:#fff;border:3px solid var(--ink);
+  box-shadow:4px 4px 0 var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;perspective:400px;
+}
+.d0-spin-img{width:78%;height:78%;object-fit:contain;animation:d0Flip 2.6s linear infinite;}
+@keyframes d0Flip{from{transform:rotateX(0deg)}to{transform:rotateX(360deg)}}
+@media (prefers-reduced-motion:reduce){.d0-spin-img{animation:none;}}
+@media (max-width:480px){.d0-spin-wrap{width:56px;height:56px;right:10px;bottom:10px;}}
 </style>
 </head>
 <body>
@@ -353,7 +366,22 @@ footer{
   <div style="margin-top:14px">© 2002—∞ JUANFLAC. all rights reserved (or whatever)</div>
 </footer>
 
+<div class="d0-spin-wrap" aria-hidden="true">
+  <img id="d0logo" class="d0-spin-img" src="assets/d0/deities.png" alt="">
+</div>
+
 <script>
+// persistent d0 logo spinner (coin-flip cycle, every page)
+(function(){
+  var img=document.getElementById('d0logo');
+  if(!img) return;
+  var logos=['assets/d0/deities.png','assets/d0/d0-stars.png','assets/d0/d0-smile.png','assets/d0/d0-mujer.png','assets/d0/d0-nickelodeon.png','assets/d0/d0-glee-blurred.png'];
+  var i=0;
+  img.addEventListener('animationiteration',function(){
+    i=(i+1)%logos.length;
+    img.src=logos[i];
+  });
+})();
 (function(){
   var cols=['#ff2fb3','#9d4dff','#2fd4ff','#38c400','#f5b800','#ff5e3a','#0c0c0c'];
   document.querySelectorAll('.starline').forEach(function(line){

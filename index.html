@@ -59,20 +59,37 @@ body::before{
   animation:loadit 1.6s ease-out forwards;
 }
 @keyframes loadit{to{width:100%}}
-#enterBtn{
-  opacity:0;animation:btnIn .4s 1.7s forwards;
-  font-family:"Bungee",cursive;font-size:clamp(15px,3.2vw,22px);
-  padding:14px 38px;cursor:pointer;
-  color:#fff;letter-spacing:1px;
-  background:linear-gradient(180deg,#ff8ed4 0%,#ff2fb3 48%,#c40080 52%,#ff5ec7 100%);
-  border:3px solid var(--ink);
-  box-shadow:6px 6px 0 var(--ink);
-  text-shadow:1px 1px 0 #000, -1px -1px 0 #00000055;
-  transition:transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
-}
-#enterBtn:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink);}
-#enterBtn:active{transform:scale(.97);box-shadow:2px 2px 0 var(--ink);transition-duration:100ms;}
+.unlock-wrap{opacity:0;animation:btnIn .4s 1.7s forwards;}
 @keyframes btnIn{to{opacity:1}}
+.unlock-track{
+  position:relative;width:min(320px,74vw);height:64px;border-radius:32px;
+  background:linear-gradient(180deg,#2e2e38,#0c0c12 60%,#000);
+  border:3px solid var(--ink);
+  box-shadow:6px 6px 0 var(--ink), inset 0 2px 6px #ffffff22, inset 0 -4px 10px #00000088;
+  display:flex;align-items:center;overflow:hidden;touch-action:none;
+}
+.unlock-label{
+  position:absolute;left:0;right:0;text-align:center;
+  font-family:"Bungee",cursive;font-size:12px;letter-spacing:2px;
+  background:linear-gradient(90deg,#ffffff22 0%,#ffffffee 50%,#ffffff22 100%);
+  background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:shimmer 2.2s linear infinite;
+  pointer-events:none;transition:opacity .2s;
+}
+@keyframes shimmer{to{background-position:-250% 0}}
+.unlock-handle{
+  position:absolute;left:4px;top:4px;width:56px;height:56px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:22px;color:#101018;
+  background:
+    radial-gradient(circle at 32% 24%, #ffffff 0%, #ffffffcc 10%, transparent 30%),
+    radial-gradient(circle at 50% 50%, #ffd6ef 0%, var(--pink) 45%, var(--pink-dk) 78%, #4a0030 100%);
+  border:2px solid var(--ink);
+  box-shadow:2px 2px 0 #00000088, inset 0 2px 4px #ffffffaa;
+  cursor:grab;touch-action:none;
+  transition:transform 160ms var(--ease-out);
+}
+.unlock-handle:active{cursor:grabbing;}
+.unlock-track.unlocked .unlock-label{opacity:0;}
 /* ============ ticker ============ */
 .tickerwrap{
   background:var(--ink);
@@ -120,19 +137,26 @@ main{max-width:1160px;margin:0 auto;padding:0 18px 40px;}
 .hub-card{
   display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
   text-decoration:none;color:var(--ink);
-  background:#fff;border:3px solid var(--ink);
-  box-shadow:9px 9px 0 var(--ink);
+  border-radius:46px;border:4px solid #fff;
+  background:
+    radial-gradient(circle at 28% 22%, #ffffff 0%, #ffe9f6 10%, transparent 34%),
+    radial-gradient(circle at 72% 84%, #ffffff33 0%, transparent 30%),
+    radial-gradient(ellipse at 50% 32%, #ff9fdb 0%, var(--pink) 45%, var(--pink-dk) 78%, #4a0030 100%);
+  box-shadow:0 0 0 3px var(--ink), 9px 9px 0 var(--ink), inset 0 3px 8px #ffffffaa;
   padding:52px 20px;min-height:120px;
   transition:transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
 }
 .hub-grid > a:nth-child(1){transform:rotate(-1.2deg);}
 .hub-grid > a:nth-child(2){transform:rotate(.9deg);}
 .hub-grid > a:nth-child(3){transform:rotate(-.8deg);}
-.hub-card:hover{transform:rotate(0deg) translate(-3px,-3px)!important;box-shadow:13px 13px 0 var(--ink);}
-.hub-card:active{transform:scale(.97)!important;box-shadow:5px 5px 0 var(--ink);transition-duration:100ms;}
+.hub-card:hover{transform:rotate(0deg) translate(-3px,-3px)!important;box-shadow:0 0 0 3px var(--ink), 13px 13px 0 var(--ink), inset 0 3px 8px #ffffffaa;}
+.hub-card:active{transform:scale(.97)!important;box-shadow:0 0 0 3px var(--ink), 5px 5px 0 var(--ink), inset 0 3px 8px #ffffffaa;transition-duration:100ms;}
 .hub-title{
-  font-family:"Ballet",cursive;font-weight:400;font-size:clamp(30px,5.2vw,42px);
-  letter-spacing:1px;color:var(--ink);
+  font-family:"Anton",sans-serif;font-style:italic;text-transform:uppercase;
+  font-size:clamp(24px,4.2vw,34px);letter-spacing:1px;
+  background:linear-gradient(180deg,#ffffff 0%,#f2f3fa 40%,#d5d6e4 55%,#ffffff 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:1.5px 0 0 #000,-1.5px 0 0 #000,0 1.5px 0 #000,0 -1.5px 0 #000,1px 2px 4px #00000066;
 }
 /* ============ sections ============ */
 section{margin:70px 0;}
@@ -157,11 +181,17 @@ section{margin:70px 0;}
 }
 .contact-box .biglink{
   display:inline-block;margin-top:12px;text-decoration:none;
-  font-family:"Bungee",cursive;font-size:clamp(24px,4.6vw,36px);letter-spacing:1px;
-  color:var(--pink);
+  font-family:"Bungee",cursive;font-size:clamp(17px,3.2vw,24px);letter-spacing:1px;
+  color:#fff;padding:14px 30px;border-radius:40px;
+  background:
+    radial-gradient(circle at 30% 25%, #ffffff 0%, #ffe6f5 10%, transparent 30%),
+    radial-gradient(circle at 50% 50%, #ff9fdb 0%, var(--pink) 45%, var(--pink-dk) 80%, #4a0030 100%);
+  border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);
   transform:rotate(-2deg);
+  transition:transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
 }
-.contact-box .biglink:hover{transform:rotate(2deg) scale(1.04);}
+.contact-box .biglink:hover{transform:rotate(2deg) translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink);}
+.contact-box .biglink:active{transform:scale(.97);box-shadow:2px 2px 0 var(--ink);transition-duration:100ms;}
 .contact-box p{font-family:"Pirata One",cursive;font-size:21px;color:var(--ink);letter-spacing:2px;}
 /* ============ guestbook ============ */
 .gb-box{
@@ -185,12 +215,15 @@ section{margin:70px 0;}
 textarea.gb-field{resize:vertical;min-height:60px;}
 .gb-submit{
   margin-top:14px;font-family:"Bungee",cursive;font-size:14px;letter-spacing:1px;
-  color:#fff;padding:11px 30px;cursor:pointer;
-  background:linear-gradient(180deg,#ff8ed4 0%,var(--pink) 48%,var(--pink-dk) 52%,#ff5ec7 100%);
+  color:#fff;padding:11px 30px;cursor:pointer;border-radius:30px;
+  background:
+    radial-gradient(circle at 30% 25%, #ffffff 0%, #ffe6f5 10%, transparent 30%),
+    radial-gradient(circle at 50% 50%, #ff9fdb 0%, var(--pink) 45%, var(--pink-dk) 80%, #4a0030 100%);
   border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);
+  transition:transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
 }
 .gb-submit:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink);}
-.gb-submit:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink);}
+.gb-submit:active{transform:scale(.97);box-shadow:2px 2px 0 var(--ink);transition-duration:100ms;}
 .gb-entries{max-width:680px;margin:36px auto 0;display:grid;gap:18px;}
 .gb-entry{
   background:#fff;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);
@@ -230,6 +263,22 @@ footer{
 ::selection{background:var(--pink);color:#fff;}
 ::-webkit-scrollbar{width:14px;background:#eee;}
 ::-webkit-scrollbar-thumb{background:var(--ink);border:3px solid #eee;}
+/* ============ persistent d0 spinner ============ */
+.d0-spin-wrap{
+  position:fixed;right:14px;bottom:14px;z-index:9990;
+  width:78px;height:78px;border-radius:50%;
+  background:#fff;border:3px solid var(--ink);
+  box-shadow:4px 4px 0 var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;perspective:400px;
+}
+.d0-spin-img{width:78%;height:78%;object-fit:contain;animation:d0Flip 2.6s linear infinite;}
+@keyframes d0Flip{from{transform:rotateX(0deg)}to{transform:rotateX(360deg)}}
+@media (prefers-reduced-motion:reduce){.d0-spin-img{animation:none;}}
+@media (max-width:480px){.d0-spin-wrap{width:56px;height:56px;right:10px;bottom:10px;}}
+/* ============ quick re-entry (returning visitors skip splash) ============ */
+.quick-entry header,.quick-entry .tickerwrap,.quick-entry main{animation:quickFade .4s var(--ease-out);}
+@keyframes quickFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
 <body>
@@ -237,7 +286,16 @@ footer{
 <div id="splash" role="dialog" aria-label="intro">
   <div class="splash-logo brand-text">Juanflac</div>
   <div class="loadbar"><i></i></div>
-  <button id="enterBtn" onclick="enterSite()">★ ENTER SITE ★</button>
+  <div class="unlock-wrap">
+    <div class="unlock-track" id="unlockTrack">
+      <span class="unlock-label" id="unlockLabel">slide to enter</span>
+      <div class="unlock-handle" id="unlockHandle" tabindex="0" role="button" aria-label="Slide to enter site">→</div>
+    </div>
+  </div>
+</div>
+
+<div class="d0-spin-wrap" aria-hidden="true">
+  <img id="d0logo" class="d0-spin-img" src="assets/d0/deities.png" alt="">
 </div>
 
 <div class="tickerwrap" aria-hidden="true">
@@ -323,10 +381,83 @@ footer{
 </footer>
 
 <script>
-function enterSite(){document.getElementById('splash').classList.add('gone');}
-document.getElementById('splash').addEventListener('keyup',function(e){
-  if(e.key==='Escape') enterSite();
-});
+var SPLASH_KEY='juanflac_unlocked';
+var splashEl=document.getElementById('splash');
+function enterSite(){
+  sessionStorage.setItem(SPLASH_KEY,'1');
+  splashEl.classList.add('gone');
+}
+if(sessionStorage.getItem(SPLASH_KEY)){
+  // returning visitor this session — skip the whole ritual, just fade the page in
+  splashEl.style.transition='none';
+  splashEl.classList.add('gone');
+  document.body.classList.add('quick-entry');
+} else {
+  splashEl.addEventListener('keyup',function(e){
+    if(e.key==='Escape') enterSite();
+  });
+  // slide-to-unlock drag physics
+  (function(){
+    var track=document.getElementById('unlockTrack');
+    var handle=document.getElementById('unlockHandle');
+    if(!track||!handle) return;
+    var dragging=false, startX=0, startLeft=4, maxX=0;
+    function bounds(){ maxX=track.clientWidth-handle.offsetWidth-8; }
+    bounds();
+    window.addEventListener('resize',bounds);
+    function pos(e){ return (e.touches?e.touches[0]:e).clientX; }
+    function onDown(e){
+      dragging=true; startX=pos(e);
+      startLeft=parseFloat(handle.style.left||'4');
+      handle.style.transition='none';
+      e.preventDefault();
+    }
+    function onMove(e){
+      if(!dragging) return;
+      var dx=pos(e)-startX;
+      var left=Math.max(4,Math.min(maxX,startLeft+dx));
+      handle.style.left=left+'px';
+      if(left>=maxX-2) finish();
+      e.preventDefault();
+    }
+    function onUp(){
+      if(!dragging) return;
+      dragging=false;
+      handle.style.transition='transform 160ms var(--ease-out), left 160ms var(--ease-out)';
+      var left=parseFloat(handle.style.left||'4');
+      if(left<maxX*0.72){ handle.style.left='4px'; }
+      else { finish(); }
+    }
+    function finish(){
+      if(track.classList.contains('unlocked')) return;
+      track.classList.add('unlocked');
+      handle.style.transition='left 160ms var(--ease-out)';
+      handle.style.left=maxX+'px';
+      setTimeout(enterSite,180);
+    }
+    handle.addEventListener('mousedown',onDown);
+    window.addEventListener('mousemove',onMove);
+    window.addEventListener('mouseup',onUp);
+    handle.addEventListener('touchstart',onDown,{passive:false});
+    handle.addEventListener('touchmove',onMove,{passive:false});
+    handle.addEventListener('touchend',onUp);
+    // keyboard / tap fallback for accessibility
+    handle.addEventListener('keyup',function(e){
+      if(e.key==='Enter'||e.key===' ') finish();
+    });
+  })();
+}
+// persistent d0 logo spinner (coin-flip cycle, every page)
+(function(){
+  var img=document.getElementById('d0logo');
+  if(!img) return;
+  var logos=['assets/d0/deities.png','assets/d0/d0-stars.png','assets/d0/d0-smile.png','assets/d0/d0-mujer.png','assets/d0/d0-nickelodeon.png','assets/d0/d0-glee-blurred.png'];
+  var i=0;
+  img.addEventListener('animationiteration',function(){
+    i=(i+1)%logos.length;
+    img.src=logos[i];
+  });
+})();
 // real hit counter (persists per-browser via localStorage)
 (function(){
   var n=parseInt(localStorage.getItem('juanflac_hits')||'0',10)+1;
