@@ -65,7 +65,7 @@ body::before{
   position:relative;width:min(320px,74vw);height:64px;border-radius:32px;
   background:linear-gradient(180deg,#2e2e38,#0c0c12 60%,#000);
   border:3px solid var(--ink);
-  box-shadow:6px 6px 0 var(--ink), inset 0 2px 6px #ffffff22, inset 0 -4px 10px #00000088;
+  box-shadow:6px 6px 16px rgba(12,12,12,0.40), inset 0 2px 6px #ffffff22, inset 0 -4px 10px #00000088;
   display:flex;align-items:center;overflow:hidden;touch-action:none;
 }
 .unlock-label{
@@ -142,21 +142,20 @@ main{max-width:1160px;margin:0 auto;padding:0 18px 40px;}
     radial-gradient(circle at 28% 22%, #ffffff 0%, #ffe9f6 10%, transparent 34%),
     radial-gradient(circle at 72% 84%, #ffffff33 0%, transparent 30%),
     radial-gradient(ellipse at 50% 32%, #ff9fdb 0%, var(--pink) 45%, var(--pink-dk) 78%, #4a0030 100%);
-  box-shadow:0 0 0 3px var(--ink), 9px 9px 0 var(--ink), inset 0 3px 8px #ffffffaa;
+  box-shadow:0 0 0 3px var(--ink), 9px 9px 22px rgba(12,12,12,0.43), inset 0 3px 8px #ffffffaa;
   padding:52px 20px;min-height:120px;
   transition:transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
 }
 .hub-grid > a:nth-child(1){transform:rotate(-1.2deg);}
 .hub-grid > a:nth-child(2){transform:rotate(.9deg);}
 .hub-grid > a:nth-child(3){transform:rotate(-.8deg);}
-.hub-card:hover{transform:rotate(0deg) translate(-3px,-3px)!important;box-shadow:0 0 0 3px var(--ink), 13px 13px 0 var(--ink), inset 0 3px 8px #ffffffaa;}
-.hub-card:active{transform:scale(.97)!important;box-shadow:0 0 0 3px var(--ink), 5px 5px 0 var(--ink), inset 0 3px 8px #ffffffaa;transition-duration:100ms;}
+.hub-card:hover{transform:rotate(0deg) translate(-3px,-3px)!important;box-shadow:0 0 0 3px var(--ink), 13px 13px 30px rgba(12,12,12,0.46), inset 0 3px 8px #ffffffaa;}
+.hub-card:active{transform:scale(.97)!important;box-shadow:0 0 0 3px var(--ink), 5px 5px 14px rgba(12,12,12,0.39), inset 0 3px 8px #ffffffaa;transition-duration:100ms;}
 .hub-title{
-  font-family:"Anton",sans-serif;font-style:italic;text-transform:uppercase;
-  font-size:clamp(24px,4.2vw,34px);letter-spacing:1px;
-  background:linear-gradient(180deg,#ffffff 0%,#f2f3fa 40%,#d5d6e4 55%,#ffffff 100%);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  text-shadow:1.5px 0 0 #000,-1.5px 0 0 #000,0 1.5px 0 #000,0 -1.5px 0 #000,1px 2px 4px #00000066;
+  font-family:"Bungee",cursive;text-transform:uppercase;
+  font-size:clamp(19px,3.2vw,26px);letter-spacing:1px;line-height:1.3;
+  color:#fff;
+  text-shadow:2px 0 0 #000,-2px 0 0 #000,0 2px 0 #000,0 -2px 0 #000,1px 2px 5px #00000077;
 }
 /* ============ sections ============ */
 section{margin:70px 0;}
@@ -176,7 +175,7 @@ section{margin:70px 0;}
 /* ============ contact ============ */
 .contact-box{
   max-width:640px;margin:0 auto;text-align:center;padding:40px 22px;
-  background:#fff;border:3px solid var(--ink);box-shadow:10px 10px 0 var(--ink);
+  background:#fff;border:3px solid var(--ink);box-shadow:10px 10px 24px rgba(12,12,12,0.44);
   transform:rotate(-.5deg);
 }
 .contact-box .biglink{
@@ -186,17 +185,17 @@ section{margin:70px 0;}
   background:
     radial-gradient(circle at 30% 25%, #ffffff 0%, #ffe6f5 10%, transparent 30%),
     radial-gradient(circle at 50% 50%, #ff9fdb 0%, var(--pink) 45%, var(--pink-dk) 80%, #4a0030 100%);
-  border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);
+  border:3px solid var(--ink);box-shadow:5px 5px 14px rgba(12,12,12,0.39);
   transform:rotate(-2deg);
   transition:transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
 }
-.contact-box .biglink:hover{transform:rotate(2deg) translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink);}
-.contact-box .biglink:active{transform:scale(.97);box-shadow:2px 2px 0 var(--ink);transition-duration:100ms;}
+.contact-box .biglink:hover{transform:rotate(2deg) translate(-2px,-2px);box-shadow:7px 7px 18px rgba(12,12,12,0.41);}
+.contact-box .biglink:active{transform:scale(.97);box-shadow:2px 2px 8px rgba(12,12,12,0.36);transition-duration:100ms;}
 .contact-box p{font-family:"Pirata One",cursive;font-size:21px;color:var(--ink);letter-spacing:2px;}
 /* ============ guestbook ============ */
 .gb-box{
   max-width:680px;margin:0 auto;padding:28px 24px;
-  background:#fff;border:3px solid var(--ink);box-shadow:9px 9px 0 var(--ink);
+  background:#fff;border:3px solid var(--ink);box-shadow:9px 9px 22px rgba(12,12,12,0.43);
 }
 .gb-canvas-wrap{position:relative;border:3px solid var(--ink);background:#fff;touch-action:none;}
 .gb-canvas-wrap canvas{display:block;width:100%;height:180px;cursor:crosshair;}
@@ -219,14 +218,14 @@ textarea.gb-field{resize:vertical;min-height:60px;}
   background:
     radial-gradient(circle at 30% 25%, #ffffff 0%, #ffe6f5 10%, transparent 30%),
     radial-gradient(circle at 50% 50%, #ff9fdb 0%, var(--pink) 45%, var(--pink-dk) 80%, #4a0030 100%);
-  border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);
+  border:3px solid var(--ink);box-shadow:5px 5px 14px rgba(12,12,12,0.39);
   transition:transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
 }
-.gb-submit:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink);}
-.gb-submit:active{transform:scale(.97);box-shadow:2px 2px 0 var(--ink);transition-duration:100ms;}
+.gb-submit:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 18px rgba(12,12,12,0.41);}
+.gb-submit:active{transform:scale(.97);box-shadow:2px 2px 8px rgba(12,12,12,0.36);transition-duration:100ms;}
 .gb-entries{max-width:680px;margin:36px auto 0;display:grid;gap:18px;}
 .gb-entry{
-  background:#fff;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);
+  background:#fff;border:3px solid var(--ink);box-shadow:6px 6px 16px rgba(12,12,12,0.40);
   padding:14px 16px;display:flex;gap:14px;align-items:flex-start;
 }
 .gb-entry:nth-child(odd){transform:rotate(-.6deg);}
@@ -238,7 +237,7 @@ textarea.gb-field{resize:vertical;min-height:60px;}
 .gb-empty{text-align:center;font-family:"Pirata One",cursive;font-size:19px;color:#888;letter-spacing:1px;}
 /* ============ panels ============ */
 .panels{max-width:340px;margin:76px auto 0;padding:0 4px;}
-.panel{background:#fff;border:3px solid var(--ink);box-shadow:7px 7px 0 var(--ink);}
+.panel{background:#fff;border:3px solid var(--ink);box-shadow:7px 7px 18px rgba(12,12,12,0.41);}
 .panel-head{
   font-family:"Bungee",cursive;font-size:13px;letter-spacing:2px;color:#fff;
   padding:8px 12px 7px;background:var(--ink);
@@ -268,12 +267,12 @@ footer{
   position:fixed;right:14px;bottom:14px;z-index:9990;
   width:78px;height:78px;border-radius:50%;
   background:#fff;border:3px solid var(--ink);
-  box-shadow:4px 4px 0 var(--ink);
+  box-shadow:4px 4px 12px rgba(12,12,12,0.38);
   display:flex;align-items:center;justify-content:center;
   overflow:hidden;perspective:400px;
 }
-.d0-spin-img{width:78%;height:78%;object-fit:contain;animation:d0Flip 2.6s linear infinite;}
-@keyframes d0Flip{from{transform:rotateX(0deg)}to{transform:rotateX(360deg)}}
+.d0-spin-img{width:78%;height:78%;object-fit:contain;animation:d0Flip 3s ease-in-out infinite;}
+@keyframes d0Flip{from{transform:rotateY(0deg)}to{transform:rotateY(360deg)}}
 @media (prefers-reduced-motion:reduce){.d0-spin-img{animation:none;}}
 @media (max-width:480px){.d0-spin-wrap{width:56px;height:56px;right:10px;bottom:10px;}}
 /* ============ quick re-entry (returning visitors skip splash) ============ */
@@ -294,14 +293,14 @@ footer{
   </div>
 </div>
 
-<div class="d0-spin-wrap" aria-hidden="true">
+<a class="d0-spin-wrap" href="https://instagram.com/deitiesonlyy" target="_blank" rel="noopener" aria-label="Deities Only (d0) on Instagram">
   <img id="d0logo" class="d0-spin-img" src="assets/d0/deities.png" alt="">
-</div>
+</a>
 
 <div class="tickerwrap" aria-hidden="true">
   <div class="ticker">
-    ✚ WELCOME TO THE OFFICIAL SITE OF <b>JUANFLAC</b> ✚ MUSIC PRODUCER ✚ MIX &amp; MASTER ENGINEER ✚ VIDEO EDITOR &amp; COLORIST ✚ NOW BOOKING COLLABS — DM <b>@JUANWRU</b> ON INSTAGRAM ✚ SIGN THE GUESTBOOK B4 U LEAVE ✚&nbsp;&nbsp;&nbsp;
-    ✚ WELCOME TO THE OFFICIAL SITE OF <b>JUANFLAC</b> ✚ MUSIC PRODUCER ✚ MIX &amp; MASTER ENGINEER ✚ VIDEO EDITOR &amp; COLORIST ✚ NOW BOOKING COLLABS — DM <b>@JUANWRU</b> ON INSTAGRAM ✚
+    ✚ WELCOME TO THE OFFICIAL SITE OF <b>JUANFLAC</b> ✚ MUSIC PRODUCER ✚ MIX &amp; MASTER ENGINEER ✚ NOW BOOKING COLLABS — DM <b>@JUANWRU</b> ON INSTAGRAM ✚ SIGN THE GUESTBOOK B4 U LEAVE ✚&nbsp;&nbsp;&nbsp;
+    ✚ WELCOME TO THE OFFICIAL SITE OF <b>JUANFLAC</b> ✚ MUSIC PRODUCER ✚ MIX &amp; MASTER ENGINEER ✚ NOW BOOKING COLLABS — DM <b>@JUANWRU</b> ON INSTAGRAM ✚
   </div>
 </div>
 
@@ -453,10 +452,12 @@ if(sessionStorage.getItem(SPLASH_KEY)){
   if(!img) return;
   var logos=['assets/d0/deities.png','assets/d0/d0-stars.png','assets/d0/d0-smile.png','assets/d0/d0-mujer.png','assets/d0/d0-nickelodeon.png','assets/d0/d0-glee-blurred.png'];
   var i=0;
-  img.addEventListener('animationiteration',function(){
+  var D0_DURATION=3000;
+  setTimeout(function cycle(){
     i=(i+1)%logos.length;
     img.src=logos[i];
-  });
+    setTimeout(cycle,D0_DURATION);
+  },D0_DURATION/2);
 })();
 // real hit counter (persists per-browser via localStorage)
 (function(){
