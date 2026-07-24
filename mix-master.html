@@ -21,7 +21,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{background:var(--paper);color:var(--ink);font-family:var(--body-font);overflow-x:hidden;cursor:crosshair;}
+body{background:var(--paper);color:var(--ink);font-family:var(--body-font);overflow-x:hidden;cursor:default;}
 body::before{
   content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
   background:
@@ -181,6 +181,9 @@ footer{
 @keyframes d0Flip{from{transform:rotateY(0deg)}to{transform:rotateY(360deg)}}
 @media (prefers-reduced-motion:reduce){.d0-spin-img{animation:none;}}
 @media (max-width:480px){.d0-spin-wrap{width:56px;height:56px;right:10px;bottom:10px;}}
+/* ============ custom cursor ============ */
+body{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 L19.5 12 L30 12 L21.5 18.5 L24.5 29 L16 22 L7.5 29 L10.5 18.5 L2 12 L12.5 12 Z' fill='%23ff2fb3' stroke='%23000' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 15 4, auto;}
+a,button,.hub-card,.subnav a,.gb-swatch,.gb-clear,.unlock-handle,input,textarea,.card,select{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 L19.5 12 L30 12 L21.5 18.5 L24.5 29 L16 22 L7.5 29 L10.5 18.5 L2 12 L12.5 12 Z' fill='%23ffce00' stroke='%23000' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 16 4, pointer;}
 </style>
 </head>
 <body>
@@ -260,12 +263,23 @@ footer{
 // Set embed to a Spotify embed URL to swap the placeholder for a real
 // preview player. Use "note" for partial-credit context, e.g. an album
 // where only some tracks were mixed by juanflac.
-var catalogUrl = null; // e.g. "https://open.spotify.com/playlist/XXXXXXXX"
+var catalogUrl = "https://open.spotify.com/playlist/0YUB5LWtM57SqxTuCIJxaX";
 var entries = [
-  {title:'Track Title', artist:'Artist Name', roles:['mix','master'], note:null, embed:null},
-  {title:'Album Title', artist:'Artist Name', roles:['mix'], note:'18/20 tracks mixed', embed:null},
-  {title:'Track Title', artist:'Artist Name', roles:['master'], note:null, embed:null},
-  {title:'Track Title', artist:'Artist Name', roles:['rec','mix'], note:null, embed:null}
+  {title:"Musica Pa' Restregarlo", roles:['mix','master'], note:'full album', embed:'https://open.spotify.com/embed/album/63GcjiyNtMHQSJtM4bEGxi'},
+  {title:'El Indio', roles:['mix','master'], note:'full album', embed:'https://open.spotify.com/embed/album/0bQ1tBOHgXYbDw7FV0I4LX'},
+  {title:'Jugadores Perfectos', roles:['mix','master'], note:null, embed:'https://open.spotify.com/embed/album/5ISOOriBycr1yFXZTFExyC'},
+  {title:"De Un Ratón Pa' Una Gata Con Amor", roles:['master'], note:'select tracks mastered', embed:'https://open.spotify.com/embed/album/29tuslPpEALx6pFT5kiJ1Q'},
+  {title:'Somos', roles:['mix','master'], note:'all tracks', embed:'https://open.spotify.com/embed/album/0Hvlsm1Q8hjJJChCXDGbv3'},
+  {title:'Evangelion (Deluxe Version)', roles:['mix','master'], note:'select tracks', embed:'https://open.spotify.com/embed/album/0zdDf2k6EMHsH1Rt1XCapl'},
+  {title:'#FOO', roles:['mix','master'], note:null, embed:'https://open.spotify.com/embed/track/5CxMtDL5uhb30cpQHfR9z8'},
+  {title:'Te Amo Tanto', roles:['rec','mix'], note:null, embed:'https://open.spotify.com/embed/track/0EgIZTr5vgN8zQILB4BEKf'},
+  {title:'Bendecido', roles:['master'], note:null, embed:'https://open.spotify.com/embed/track/0teOGbcLZIthVhRWH5MwQ5'},
+  {title:'No Te Veo', roles:['mix','master'], note:null, embed:'https://open.spotify.com/embed/track/2u9OtYJvELGJUAdp3N946e'},
+  {title:'Meterte', roles:['master'], note:null, embed:'https://open.spotify.com/embed/track/76HTJoulzXUr3APRujCI7L'},
+  {title:'Pastilla', roles:['mix','master'], note:null, embed:'https://open.spotify.com/embed/track/4ujYbkHJrvU7qUHyqdEJ3f'},
+  {title:'Toma Toma', roles:['prod','rec','mix','master'], note:null, embed:'https://open.spotify.com/embed/track/6mxroyqW67dm1G7ciX9VeB'},
+  {title:'Por El Aire', roles:['mix','master'], note:null, embed:'https://open.spotify.com/embed/track/2mfnmzfmQNhbWPokMNA5Nf'},
+  {title:'Querida Casa (Deluxe Version)', roles:['mix','master'], note:null, embed:'https://open.spotify.com/embed/track/6O2P21frdph7wBUHm2JMMN'}
 ];
 
 var ROLE_LABEL={mix:'MIX',master:'MASTER',rec:'RECORDING',prod:'PRODUCTION'};
@@ -277,10 +291,10 @@ var ROLE_LABEL={mix:'MIX',master:'MASTER',rec:'RECORDING',prod:'PRODUCTION'};
       ? '<div class="spotify-embed"><iframe src="'+e.embed+'" loading="lazy" allow="encrypted-media" title="'+e.title+' — Spotify preview"></iframe></div>'
       : '<div class="embed-placeholder">♪ SPOTIFY PREVIEW<br>COMING SOON ♪</div>';
     var tags=e.roles.map(function(r){return '<span class="tag '+r+'">'+ROLE_LABEL[r]+'</span>';}).join('');
+    var meta=e.artist?'<div class="card-meta">'+e.artist+'</div>':'';
     var note=e.note?'<div class="role-note">'+e.note+'</div>':'';
     return '<div class="card">'+media+
-      '<div class="card-info"><div class="card-title">'+e.title+'</div>'+
-      '<div class="card-meta">'+e.artist+'</div>'+note+
+      '<div class="card-info"><div class="card-title">'+e.title+'</div>'+meta+note+
       '<div class="tags">'+tags+'</div></div></div>';
   }).join('');
 

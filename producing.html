@@ -21,7 +21,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{background:var(--paper);color:var(--ink);font-family:var(--body-font);overflow-x:hidden;cursor:crosshair;}
+body{background:var(--paper);color:var(--ink);font-family:var(--body-font);overflow-x:hidden;cursor:default;}
 body::before{
   content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
   background:
@@ -175,6 +175,9 @@ footer{
 @keyframes d0Flip{from{transform:rotateY(0deg)}to{transform:rotateY(360deg)}}
 @media (prefers-reduced-motion:reduce){.d0-spin-img{animation:none;}}
 @media (max-width:480px){.d0-spin-wrap{width:56px;height:56px;right:10px;bottom:10px;}}
+/* ============ custom cursor ============ */
+body{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 L19.5 12 L30 12 L21.5 18.5 L24.5 29 L16 22 L7.5 29 L10.5 18.5 L2 12 L12.5 12 Z' fill='%23ff2fb3' stroke='%23000' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 15 4, auto;}
+a,button,.hub-card,.subnav a,.gb-swatch,.gb-clear,.unlock-handle,input,textarea,.card,select{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 L19.5 12 L30 12 L21.5 18.5 L24.5 29 L16 22 L7.5 29 L10.5 18.5 L2 12 L12.5 12 Z' fill='%23ffce00' stroke='%23000' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 16 4, pointer;}
 </style>
 </head>
 <body>
@@ -246,12 +249,14 @@ footer{
 // EDIT ME: production highlight entries. Set embed to a Spotify embed URL
 // (e.g. "https://open.spotify.com/embed/track/XXXXXXXX") to swap the
 // placeholder for a real preview player. Set catalogUrl below for the button.
-var catalogUrl = null; // e.g. "https://open.spotify.com/playlist/XXXXXXXX"
+var catalogUrl = "https://open.spotify.com/playlist/1FXJJ7Z3CVLAqLk0kEizGj";
 var entries = [
-  {title:'Track Title', artist:'Artist Name', embed:null},
-  {title:'Track Title', artist:'Artist Name', embed:null},
-  {title:'Track Title', artist:'Artist Name', embed:null},
-  {title:'Track Title', artist:'Artist Name', embed:null}
+  {title:'Después de la Tormenta', embed:'https://open.spotify.com/embed/track/5xKGpBhAXr8c4eYsnMeHl8'},
+  {title:'Tu Reflejo (ft. Juanflac)', embed:'https://open.spotify.com/embed/track/1kt4eGiY1bqAmO5UQoVIbb'},
+  {title:'Baile de Fin de Año', embed:'https://open.spotify.com/embed/track/7ISpp0RrCz0I93NN8dI3fB'},
+  {title:'Natural Gas', embed:'https://open.spotify.com/embed/track/0scl2yhRl2NZo6IqWYInlQ'},
+  {title:'Ni Sa Po Ni Se Po', embed:'https://open.spotify.com/embed/track/7xxRf3Z910bJPkoAfgunwS'},
+  {title:'New Rock', embed:'https://open.spotify.com/embed/track/1o7XzP5Y4VTQTCaFwprzB2'}
 ];
 
 (function(){
@@ -260,9 +265,9 @@ var entries = [
     var media=e.embed
       ? '<div class="spotify-embed"><iframe src="'+e.embed+'" loading="lazy" allow="encrypted-media" title="'+e.title+' — Spotify preview"></iframe></div>'
       : '<div class="embed-placeholder">♪ SPOTIFY PREVIEW<br>COMING SOON ♪</div>';
+    var meta=e.artist?'<div class="card-meta">'+e.artist+'</div>':'';
     return '<div class="card">'+media+
-      '<div class="card-info"><div class="card-title">'+e.title+'</div>'+
-      '<div class="card-meta">'+e.artist+'</div>'+
+      '<div class="card-info"><div class="card-title">'+e.title+'</div>'+meta+
       '<div class="tags"><span class="tag prod">PRODUCTION</span></div></div></div>';
   }).join('');
 
